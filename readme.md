@@ -6,7 +6,7 @@ The objective of this project is to set up a private Docker registry on Red Hat 
 host and manage Docker images securely within an internal network.
 
 ```mermaid
-graph TD;
+graph LR;
     A[Client Request] --> B[Initiate Docker Registry Connection]
     B --> C[Server Responds]
     C --> D[Client Sends Authentication]
@@ -104,7 +104,6 @@ graph TD;
 -   **Configure Authentication**:
     -   Create a `config.yml` file for Docker Registry configuration:
 
-        
         ```yml
 	version: 0.1
         log:
@@ -136,11 +135,8 @@ graph TD;
           htpasswd:
             path: /etc/docker/registry/htpasswd
 	``` 
-        
-    -   Run the Docker Registry container with the configuration:
-
-        
-        ```
+- Run the Docker Registry container with the configuration:
+	```bash
 	sudo docker run -d -p 5000:5000 --name registry \
           -v /var/lib/registry:/var/lib/registry \
           -v /etc/docker/registry/config.yml:/etc/docker/registry/config.yml \
@@ -159,10 +155,8 @@ graph TD;
     
 -   **Configure Docker Registry for SSL/TLS**:
     -   Edit `config.yml` and add:
-        
 
-        
-        ```
+    ```yml
 	http:
           headers:
             X-Content-Type-Options: "nosniff"
