@@ -105,7 +105,8 @@ graph TD;
     -   Create a `config.yml` file for Docker Registry configuration:
 
         
-        `version: 0.1
+        ```yml
+	version: 0.1
         log:
           fields:
             service: registry
@@ -133,15 +134,18 @@ graph TD;
             threshold: 3
         auth:
           htpasswd:
-            path: /etc/docker/registry/htpasswd` 
+            path: /etc/docker/registry/htpasswd
+	``` 
         
     -   Run the Docker Registry container with the configuration:
 
         
-        `sudo docker run -d -p 5000:5000 --name registry \
+        ```
+	sudo docker run -d -p 5000:5000 --name registry \
           -v /var/lib/registry:/var/lib/registry \
           -v /etc/docker/registry/config.yml:/etc/docker/registry/config.yml \
-          registry:2` 
+          registry:2
+	``` 
         
 
 #### Configure SSL/TLS for Secure Communication
@@ -158,7 +162,8 @@ graph TD;
         
 
         
-        `http:
+        ```
+	http:
           headers:
             X-Content-Type-Options: "nosniff"
           secret: a-random-secret
@@ -198,7 +203,8 @@ graph TD;
           headers:
             X-Content-Type-Options: "nosniff"
           headers:
-            X-Content-Type-Options: "nosniff"` 
+            X-Content-Type-Options: "nosniff"
+	``` 
         
     -   Restart Docker Registry container to apply SSL/TLS settings.
 
