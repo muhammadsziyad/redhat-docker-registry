@@ -104,7 +104,7 @@ graph LR;
 -   **Configure Authentication**:
     -   Create a `config.yml` file for Docker Registry configuration:
 
-        ```yml
+      ```yml
 	version: 0.1
         log:
           fields:
